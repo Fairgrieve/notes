@@ -1,0 +1,79 @@
+#+title: The Linux Programming Interface Chapter 4
+#+author: Jonathan Fairgrieve
+
+* File I/O: The Universal I/O Model
+
+** Overview
+- File descriptors:
+  - Nonnegative integers used to refer to open files
+  - Used for all types of files (regular files, pipes, FIFOs, sockets, terminals, devices)
+  - Each process has its own set of file descriptors
+
+- Standard file descriptors:
+  | Descriptor | Purpose         | POSIX Name     | stdio Stream |
+  |------------+------------------+----------------+--------------|
+  | 0          | Standard input   | STDIN_FILENO  | stdin        |
+  | 1          | Standard output  | STDOUT_FILENO | stdout       |
+  | 2          | Standard error   | STDERR_FILENO | stderr       |
+
+** Key System Calls for File I/O
+1. ~open(pathname, flags, mode)~
+   - Opens or creates a file
+   - Returns a file descriptor
+2. ~read(fd, buffer, count)~
+   - Reads data from an open file
+   - Returns number of bytes read
+3. ~write(fd, buffer, count)~
+   - Writes data to an open file
+   - Returns number of bytes written
+4. ~close(fd)~
+   - Closes an open file descriptor
+
+** Universality of I/O
+- Same system calls (~open()~, ~read()~, ~write()~, ~close()~) used for all file types
+- Enables writing programs that work on any type of file
+- Device-specific features accessed via ~ioctl()~ system call
+
+** Opening a File: ~open()~
+#+BEGIN_SRC c
+int open(const char *pathname, int flags, ... /* mode_t mode */);
+#+END_SRC
+
+- Returns file descriptor on success, -1 on error
+- ~flags~ argument: bit mask specifying access mode and other options
+- ~mode~ argument: specifies permissions for newly created files (when using ~O_CREAT~)
+
+*** File Access Modes
+| Mode      | Description                            |
+|-----------+----------------------------------------|
+| O_RDONLY  | Open for reading only                  |
+| O_WRONLY  | Open for writing only                  |
+| O_RDWR    | Open for both reading and writing      |
+
+*** Important ~flags~ Options
+- ~O_CREAT~: Create file if it doesn't exist
+- ~O_TRUNC~: Truncate existing file to zero length
+- ~O_APPEND~: Append writes to end of file
+- ~O_EXCL~: With ~O_CREAT~, ensure exclusive file creation
+
+*** Common Errors
+- ~EACCES~: Permission denied
+- ~EISDIR~: Attempted to open directory for writing
+- ~EMFILE~: Process limit on open file descriptors reached
+- ~ENOENT~: File doesn't exist (without ~O_CREAT~)
+
+** The ~creat()~ System Call
+#+BEGIN_SRC c
+int creat(const char *pathname, mode_t mode);
+#+END_SRC
+
+- Equivalent to: ~open(pathname, O_WRONLY | O_CREAT | O_TRUNC, mode)~
+- Now obsolete due to ~open()~'s flexibility
+
+** Notes
+- File descriptor returned by ~open()~ is guaranteed to be the lowest-numbered unused descriptor
+- ~open()~ flags are divided into:
+  1. File access mode flags
+  2. File creation flags
+  3. Open file status flags
+- Some flags (e.g., ~O_APPEND~, ~O_ASYNC~) can be modified later using ~fcntl()~

@@ -1,0 +1,89 @@
+#+title: Github Workflow
+#+author: Jonathan Fairgrieve
+
+* Git/GitHub Workflow for Notes in Doom Emacs
+
+** Initial Setup
+
+1. Create a new repository on GitHub
+   - Go to github.com and create a new repository called "notes"
+   - Don't initialize it with a README, .gitignore, or license
+
+2. Initialize your local Git repository
+   #+BEGIN_SRC sh
+   cd ~/notes
+   git init
+   #+END_SRC
+
+3. Add your files to Git
+   #+BEGIN_SRC sh
+   git add .
+   #+END_SRC
+
+4. Make your first commit
+   #+BEGIN_SRC sh
+   git commit -m "Initial commit of my notes"
+   #+END_SRC
+
+5. Link your local repository to GitHub
+   #+BEGIN_SRC sh
+   git remote add origin https://github.com/yourusername/notes.git
+   git branch -M main
+   git push -u origin main
+   #+END_SRC
+
+** Doom Emacs Workflow
+
+1. Open your notes in Doom Emacs
+   - ~SPC f f~ (find file) and navigate to your notes directory
+
+2. Edit your notes as usual
+
+3. Check Git status
+   - ~SPC g s~ to open Magit status buffer
+
+4. Stage changes
+   - In the Magit status buffer, move cursor to unstaged changes
+   - Press ~s~ to stage individual files or ~S~ to stage all
+
+5. Commit changes
+   - In Magit status buffer, press ~c c~
+   - Type your commit message
+   - Press ~C-c C-c~ to finalize the commit
+
+6. Push changes to GitHub
+   - In Magit status buffer, press ~P p~ to push to origin/main
+
+** Syncing Between Computers
+
+1. On your other computer, clone the repository
+   #+BEGIN_SRC sh
+   git clone https://github.com/yourusername/notes.git
+   #+END_SRC
+
+2. Before starting work, always pull the latest changes
+   - In Doom Emacs, open Magit status with ~SPC g s~
+   - Press ~F p~ to pull from origin/main
+
+3. Make changes, commit, and push as described above
+
+** Useful Doom Emacs Keybindings for Git
+
+| Keybinding | Action                  |
+|------------+-------------------------|
+| ~SPC g s~  | Open Magit status buffer|
+| ~SPC g b~  | List Git branches       |
+| ~SPC g c~  | Create a commit         |
+| ~SPC g P~  | Push to remote          |
+| ~SPC g F~  | Pull from remote        |
+
+Remember to commit often and push regularly to keep your notes synchronized across devices!
+
+** Additional Tips
+
+- Create a ~.gitignore~ file in your notes directory to exclude any files you don't want to track (e.g., temporary files, exported PDFs).
+- If you're working on a major reorganization or a new section, consider creating a new branch (~SPC g b c~ in Magit).
+- If you encounter merge conflicts, use ~e~ in the Magit status buffer to ediff conflicting files.
+- Use ~SPC g l~ to view Git log and navigate through your note history.
+- Consider using Git tags to mark important versions of your notes, like "end-of-semester" or "exam-prep-complete".
+- You can set up a Git hook to automatically push your changes after each commit, ensuring your notes are always up-to-date on GitHub.

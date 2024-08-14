@@ -1,0 +1,3 @@
+#+title: The Linux Programming Interface Chapter 2
+#+description: Notes on the second chapter of the text.
+#+author: Jonathan Fairgrieve
