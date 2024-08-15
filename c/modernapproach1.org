@@ -1,0 +1,83 @@
+#+title: C: A Modern Approach Chapter 1
+#+author: Jonathan Fairgrieve
+#+last_modified: Wed Aug 14 16:15:18 2024
+
+* Introducing C
+
+** 1.1 History of C
+
+*** Origins
+- By-product of the UNIX OS
+  - Developed at Bell Labs in 1972
+- Successor to the B language
+- UNIX rewritten in C in 1973 providing needed portability
+
+*** Standardization
+- K&R book became the go to handbook for C development
+  - K&R was unclear about many features and formatting, making many distinctions between the language and OS unclear
+- C was evolving, adding and removing features without proper documentation
+- Development of a standard for C began in 1983 and formally approved in 1989 as the ANSI standard
+  - Usually referred to as C89
+  - More changes occurred throughout the 90s, leading to a new standard, ISO/IEC 9899:1999, known as C99
+
+*** C-Based Languages
+- A few examples include:
+  1. C++
+     - includes all features of C, but adds classes and other support for OOP
+  2. Java
+     - based on C++
+       + but is, in fact, not based
+  3. C#
+     - Microsoft's version of Java
+  4. Perl
+     - originally a small scripting language, but, over time, has evolved to include many features of C
+- Learning C gives great insight and preparation for many languages, most importantly those inheriting from C
+
+** 1.2 Strengths and Weaknesses of C
+1. C is a low level language
+   - Suitable for systems programming
+   - Provides operations that correspond closely to a computer's built-in instructions
+     - Makes it very speedy
+       - Admin hes doing it sideways
+2. C is a small language
+   - To keep features small, C leans on a library of standard functions
+3. C is as permissive language
+
+*** Strengths
+1. Efficiency
+   - Since C was intended for applications where ASM was used, it needs to be insanely quick
+2. Portability
+   - A bit self explanatory in this day in age
+3. Power
+   - Able to do a lot with a little
+4. Flexibility
+   - Although originally designed for systems programming, not restricted to it
+5. Standard Library
+   - Contains hundreds of functions for I/O, string handling, storage allocation, etc
+6. Integration with UNIX
+   - Linux chadmaxxing
+
+*** Weaknesses
+1. Can be error-prone
+   - Programming mistakes caught by other languages can't be detected by C compiler
+2. Can be difficult to understand
+   - Although small, has a lot of features not found in other languages
+   - Terse nature of the language
+     - Was made back when talking to computers was 5head so it can be a bit oogabooga
+3. Can be difficult to modify
+   - Large programs can be hard to change if maintenance wasn't considered
+
+*** Effective Use of C
+1. Learn how to avoid pitfalls
+   - Modern compilers can catch a lot of common issues, but can't get everything
+2. Use software tools for reliability
+   - Use linters and debuggers, commonplace in today's development world
+3. Take advantage of existing libraries
+   - Because C is the god-father of languages, many libraries and extras have been provided by the community over the years
+4. Adopt a sensible set of conventions
+   - Find a good convention style, and stick to it
+   - When maintaining other's code, uphold the original author's conventions
+5. Avoid tricks and overly complex code
+   - Short != good in many scenarios
+6. Stick to the standard
+   - Avoid using nonstandard features and libraries for portability

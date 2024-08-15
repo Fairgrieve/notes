@@ -1,5 +1,7 @@
 #+title: The Linux Programming Interface Chapter 4
 #+author: Jonathan Fairgrieve
+#+last_edited: Wed Aug 14 05:15:43 2024
+
 
 * File I/O: The Universal I/O Model
 
@@ -77,3 +79,6 @@ int creat(const char *pathname, mode_t mode);
   2. File creation flags
   3. Open file status flags
 - Some flags (e.g., ~O_APPEND~, ~O_ASYNC~) can be modified later using ~fcntl()~
+
+** Notes 2
+- We are pogging
