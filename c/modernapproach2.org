@@ -1,0 +1,64 @@
+#+title: C: A Modern Approach Chapter 2
+#+author: Jonathan Fairgrieve
+#+last_modified:Wed Aug 14 17:26:51 2024
+
+* C Fundamentals
+
+** 2.1 | Writing a Simple Programming
+
+*** Printing a Pun
+ - The following program, pun.c, displays the message each time it's run:
+  #+BEGIN_SRC c
+  #include <stdio.h>
+
+  int main(void) {
+      printf("To C, or not to C: that is the question.\n");
+      return 0;
+  }
+  #+END_SRC
+- The line ~#include <stdio.h>~ is necessary to include the library of C's standard I/O
+- The program's executable code goes inside the main function
+- ~\n~ tells the printf statement to advance to the next line
+- *return 0;* returns the value 0 to the program, terminating it successfully
+
+*** Compiling and Linking
+- Create it in a file with a .c extension
+1. Preprocessing
+   - The program is first given to a *preprocessor*, which obeys commands that begin with #, known as directives
+2. Compiling
+   - The modified program goes to a *compiler* which translates it into machine code
+3. Linking
+   - A *linker* combines the machine code with any additional code needed to create a complete executable program
+- This process is usually automated
+- Compile using:
+  #+BEGIN_SRC bash
+  gcc pun.c -o pun
+  #+END_SRC
+- Or, if using an IDE like Visual Studio, do the thing instead
+
+** 2.2 | The General Form of a Simple Program
+
+*** Directives
+- States the information in the header, ~<stdio.h>~, is to be included before compilation
+- *Directives* always begin with a # character
+- One line long, no semicolon or special terminating character
+
+*** Functions
+- *Functions* are building blocks from which programs are constructed
+- Series of statements that have been grouped together and given a name
+- They fall into two categories:
+  1. Written by the programmer
+  2. Those provided from C implementation itself (library functions)
+- Uses a return statement to specify what value it "returns," ex., ~return x + 1~
+- Although a program can use as many functions as the programmer wants, only ~int main(void)~ is required
+  - The int in ~int main(void)~ specifies its return *type*, in this case, an integer value
+  - Void indicates that main takes no arguments
+
+*** Statements
+- A *statement* is a command to be executed when the program runs
+- The pun.c program calls the printf function to display a string on the screen ~printf("To C, or not to C: that is the question.\n)~
+- C requires each statement ends with a semicolon
+
+*** Printing Strings
+- We used printf to display a *string literal*, a series of chars enclosed in double quotes
+- printf doesn't automatically go to the next line, for that we need ~\n~

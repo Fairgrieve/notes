@@ -4,7 +4,7 @@
 
 * Introducing C
 
-** 1.1 History of C
+** 1.1 | History of C
 
 *** Origins
 - By-product of the UNIX OS
@@ -26,14 +26,14 @@
      - includes all features of C, but adds classes and other support for OOP
   2. Java
      - based on C++
-       + but is, in fact, not based
+       + but Java itself is, in fact, not based
   3. C#
      - Microsoft's version of Java
   4. Perl
      - originally a small scripting language, but, over time, has evolved to include many features of C
 - Learning C gives great insight and preparation for many languages, most importantly those inheriting from C
 
-** 1.2 Strengths and Weaknesses of C
+** 1.2 | Strengths and Weaknesses of C
 1. C is a low level language
    - Suitable for systems programming
    - Provides operations that correspond closely to a computer's built-in instructions
